@@ -1,0 +1,13 @@
+.DS_Store
+.idea
+*.log
+tmp/
+*.aux
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.~undo-tree~
+.auctex-auto
