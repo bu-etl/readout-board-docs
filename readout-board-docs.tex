@@ -68,70 +68,97 @@
 
 \section{Introduction to the Flipped Module Design}
 
-This document describes an alternative of the ETL module and service hybrid design to the TDR design. In this proposal the silicon sensor is located below the read out chip (ETROC), essentially flipping the TDR module on its head. A PCB can be mounted (glued) on top of the ETROC.
+This document describes an alternative of the ETL module and service hybrid design to the TDR design.
+In this proposal the LGAD silicon sensor is located below the read out chip (ETROC), essentially flipping the TDR module on its head.
+A PCB can be mounted (glued) on top of the ETROC, allowing for a board-to-board connection to the readout board (RB).
+Signals, LV and bias voltage (BV) are distributed from the RB to the module via these board-to-board and spring connectors.
+The ETROC and the LGAD sensor are connected to the PCB through wire bonds.
+The main motivation for this revised RB and module design are the tight space restrictions for the service hybrid in the TDR design, which are relaxed if the RB sits on top of the modules instead of on top of the power board in the service channel between the modules.
 
-Describe the flipped module design
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.90 \textwidth]{figures/ETL_exploded_legend.pdf}
+\includegraphics[width=0.40 \textwidth]{figures/Flipped_module_3D_v2.png}
+\includegraphics[width=0.55 \textwidth]{figures/Flipped_module_legend_v2.png}
+\caption{
+Top: Partially exploded views of the module-RB sandwich showing its various components.
+Bottom: View of a half module in the flipped configuration, with the LGAD sensor below the ETROC.
+}
+\label{fig:flippedModule}
+\end{figure}
 
-How many flavors of SH (I think this is consistent with the TDR right?)
+We forsee three different versions of the RB: covering 3 (6), 6 (12) and 7 (14) full (half) modules.
+Each full module consists of two LGAD sensors and four readout chips (ETROC).
 
-Picture of the design similar to the one on the TDR
-
-\includegraphics[width=\linewidth]{figures/image7.pdf}
-
-\emph{Figure 1: Top: Exploded views of the service hybrid showing its various components. Bottom: Service hybrid mounted between two modules, with the power board visible on top (left), and the service hybrid showing the readout board and components (right).}
-
-The expected radiation environment for various regions are shown in Table 1, and they roughly correspond to being populated by the 6-module boards in the area at $>$1$\times$10$^{15}$ n/cm$^{2}$, and the rest is organized such that to optimize the area coverage of the detector with sensors. The layout of modules and service hybrids on the surface of the ETL wedges is presented in Figure 2.
+The expected radiation environment for various regions are shown in Table 1.
+To deal with higher occupancy in high-$|\eta|$ regions the innermost part of the ETL disk ($r<425~\mathrm{mm} = |\eta|>2.65$) will be populated by 3-module readout boards.
+The rest of the disk is organized such that the area coverage of the detector with sensors is optimized.
+The layout of modules and service hybrids on the surface of the ETL wedges is presented in Figure~\ref{fig:coverage}.
+Very good coverage between $1.7<|eta|<2.8$ is achieved, without the need for half-sized modules.
+Space on the outer edge of the disks is reserved for MCT connectors as well as LV and BV distribution.
+The main difference w.r.t. the TDR design in terms of service hybrids is the placement of the RB on top of the modules, instead of the power board.
+The RBs are powered either from above or below (powered from above shown in Fig.~\ref{fig:coverage}).
 
 \begin{table}
   \centering
-  \caption{Table 1: Nominal radiation doses and fluences at various locations of the timing layers after 3000 fb$^{-1}$. The last two columns show the radiation levels providing a safety margin of a factor 1.5. The fluence is normalized to 1 MeV neutron equivalent in silicon.}
+  \caption{Table 1: Nominal radiation doses and fluences at various locations of the timing layers after 3000 fb$^{-1}$. The fluence is normalized to 1 MeV neutron equivalent in silicon.
+  Numbers from [1]}
   \label{table:radiationField}
   \begin{tabular}{ c c c c c c }
     Region & $\eta$ & R (cm) & z (cm) & Fluence (cm$^{-2}$) & Dose (kGy) \\
     \midrule
-    barrel & 0.0    & 117    & 0      & 1.7$\times 10^{14}$ & 16         \\
-    barrel & 1.15   & 117    & 170    & 1.9$\times 10^{14}$ & 21         \\
-    barrel & 1.45   & 117    & 240    & 2.0$\times 10^{14}$ & 25         \\
-    endcap & 1.6    & 127    & 304    & 1.1$\times 10^{14}$ & 25         \\
-    endcap & 2.0    & 84     & 304    & 2.4$\times 10^{14}$ & 75         \\
-    endcap & 2.5    & 50     & 304    & 6.6$\times 10^{14}$ & 260        \\
-    endcap & 3.0    & 30     & 304    & 1.7$\times 10^{15}$ & 690        \\
+    barrel & 0.0    & 116    & 0      & 1.65$\times 10^{14}$ & 18         \\
+    barrel & 1.15   & 116    & 170    & 1.80$\times 10^{14}$ & 25         \\
+    barrel & 1.45   & 116    & 240    & 1.90$\times 10^{14}$ & 32         \\
+    endcap & 1.6    & 127    & 303    & 1.5$\times 10^{14}$ & 19         \\
+    endcap & 2.0    & 84     & 303    & 3.0$\times 10^{14}$ & 50         \\
+    endcap & 2.5    & 50     & 303    & 7.5$\times 10^{14}$ & 170        \\
+    endcap & 3.0    & 31.5   & 303    & 1.6$\times 10^{15}$ & 450        \\
   \end{tabular}
 \end{table}
 
-\includegraphics[width=\linewidth]{figures/image4.pdf}
-
-\includegraphics[width=\linewidth]{figures/image3.pdf}
-
-\emph{Figure 2: Layout of various kinds of SH on an ETL half-disk}
-
-Can you update this table?
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\linewidth]{figures/coverage.png}
+\caption{
+Layout of various kinds of RBs on an ETL half-disk.
+The red and green circles reflect the mechanical envelope of the ETL disk and the area between $1.7<|\eta|<2.8$, respectively.
+Cyan, pink and yellow rectangles correspond to 3-, 6-, and 7-module readout boards.
+The green rectangles indicate the reserved space above the RB for the power boards and LV services.
+}
+\label{fig:coverage}
+\end{figure}
 
 \begin{table}
   \caption{List of the number of each type of component used in the full ETL detector.}
   \centering
   \begin{tabular}{ l c c }
-    Component type             & Number per wedge & Total number \\
+    Component type               & Number per wedge (avg) & Total number \\
     \midrule
-    LGADs                     & 1,136            & 18,176       \\
-    ETROCs                    & 2,272            & 36,352       \\
-    1-sensor modules          & 80               & 1,280        \\
-    2-sensor modules          & 528              & 8,448        \\
-    Full-size service hybrids & 87               & 1,392        \\
-    Half-size service hybrids & 22               & 352          \\
-    lpGBTs, VTRX, SCA         & 109              & 1,744        \\
-    DC-DC converters          & 893              & 14,288       \\ %9 per full-size and 5 per half-size
+    LGADs                        & 930             & 14,880      \\
+    ETROCs                       & 1,860           & 29,760      \\
+    2-sensor (full size) modules & 465             & 7,440       \\
+    1-sensor (half size) modules & 0               & 0       \\
+    total service hybrids     & 86.5               & 1,384       \\
+    3-module service hybrids  & 28.5               & 456         \\
+    6-module service hybrids  & 26.5               & 424         \\
+    7-module service hybrids  & 31.5               & 504         \\
+    lpGBTs, VTRX, SCA         & 86.5               & 1,384       \\
+    DC-DC converters \textbf{need updated numbers!}          & \textit{893}    & \textit{14,288}        \\ %9 per full-size and 5 per half-size
   \end{tabular}
   \label{tab:ETLNumberOfComponents}
 \end{table}
 
-\includegraphics[width=\linewidth]{figures/image1.pdf}
-
 \section{Changes to the Module Design}
 
-(not sure if this is better with the section above)
-
-Here talk about the specific module
+In this proposal, no half size modules are foreseen.
+The modules itself have a changed structure, shown in Figure~\ref{fig:flippedModule}:
+\begin{itemize}
+  \item A thicker carrier (approx. 1 mm) made out of Aluminium nitride (AlN) or Aluminium oxide (alumina)
+  \item The LGAD sensor is directly mounted to the carrier, below the ETROC
+  \item The LGAD (BV) and ETROC (signals and LV) are wire bonded to a PCB that covers the module
+  \item The module is connected to the readout board via board-to-board connectors
+\end{itemize}
 
 Things related to cooling and the PCB
 
@@ -145,13 +172,12 @@ get updated.
 
 \section{Specifications for the Power Board}
 
-I guess we assume this doesn't change and just in the section above put how much area is available for the PB?
+The proposal does not directly impact the design of the power board.
+The service hybrid corridor assumed to be available for the PB is 29.5mm wide, and the full height of approximately $7.5--8.5~\mathrm{mm}$ is available for the PB.
+The only services routed on top of the PB are the LV cables.
+The connection from PB to RB can be done via flat cables, using either Molex XXXX or Hirose DF57 connectors.
 
 \section{Specifications for the Readout Board}
-
-I also think most of this is not changing.
-
-(below is what we had in the previous document)
 
 The most important functions for the RB are:
 
@@ -237,25 +263,83 @@ The bias voltage distribution to the LGAD sensors is performed through the RB. U
 
 VTRx+ is expected to tolerate a total fluence of $\approx$10$^{15}$ n$_{eq}$/cm$^{2}$. The expected radiation field within ETL volume is shown in Figure 6: Fluence prediction in ETL for an integrated luminosity of 3000 fb$^{-1}$ from the FLUKA simulations. The majority of VTRx+ are expected to survive the radiation damage at the HL-LHC, while those at the innermost radius may need to be replaced at one of the YETS. Some compensation of the radiation damage in VTRX+ may be possible by adjusting the BV of the laser to make it last longer, at the order of 10\% more.
 
+\begin{figure}[!h]
+\centering
 \includegraphics[width=\linewidth]{figures/image6.pdf}
-
-\emph{Figure 6: Fluence prediction in ETL for an integrated luminosity of 3000 fb$^{-1}$ from the FLUKA simulations.}
+\caption{
+Fluence prediction in ETL for an integrated luminosity of 3000 fb$^{-1}$ from the FLUKA simulations.}
+\label{fig:fluka}
+\end{figure}
 
 \section{Geometric Coverage}
 
-Can you reproduce the image below?
+We optimize the placement of modules and readout boards to achieve highest possible coverage of the ETL disk, without the need for half size modules.
+The ETL disk is assumed to be limited by $r_{\mathrm{inner}}=315~\mathrm{mm}$ and $r_{\mathrm{outer}}=1185~\mathrm{mm}$, depicted by the red circles in Figure~\ref{fig:coverage_both}, corresponding to $1.659 \leq |\eta| \leq 2.950$ for an ETL position of $z=3~\mathrm{m}$.
+Modules on the front and back face of each disk are arranged such that the are not covered by a sensor is minimized.
+The two different arrangements are shown on the left and right of Figure~\ref{fig:coverage_both}.
 
-\includegraphics[width=\linewidth]{figures/image5.pdf}
+In order to measure the coverage of the proposed module layout we use LGAD sensor dimensions of $22.0 \times 42.5~\mathrm{mm}$, and a full module of size $56.5 \times 43.1~\mathrm{mm}$.
+A $0.5~\mathrm{mm}$ gap between each module is assumed, and the channel for the power board is taken to be $29.5~\mathrm{mm}$.
+Each side of the ETL detector is made of two disks (four faces) that are shifted by $2~\mathrm{mm}$ in $x$ and $y$ in order to also cover the inter-sensor gaps.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.60 \textwidth]{figures/coverage_both.png}
+\caption{
+Two half disks of the ETL detectors.
+The red and green circles reflect the mechanical envelope of the ETL disk and the area between $1.7<|\eta|<2.8$, respectively.
+Cyan, pink and yellow rectangles correspond to 3-, 6- and 7-module readout boards.
+The green rectangles indicate the reserved space for the power boards and LV services.
+}
+\label{fig:coverage_both}
+\end{figure}
+
+Approximately 96\% (70\%) of muons with $1.7<\eta<2.8$ and $p_{T}>25~\mathrm{GeV}$ produced at the center of CMS and propagated through the magnetic field produce at least one (two) intersection with an ETL sensor.
+The majority of muons not producing any hit pass through uncovered areas at the edge of the ETL disks.
+If the rapidity window is narrowed to $2.0<\eta<2.5$, more than 99\% of the muons intersect at least one of the sensors.
 
 \section{Services}
 
 LV distribution, Bias Voltage, Grounding, Cooling
 
-Can we put Natalia's proposal on the LV PP in here?
+At most five service hybrids are arranged in one row on the ETL disk, shown in Fig.~\ref{fig:coverage_both}.
+Such a configuration is shown in Fig.~\ref{fig:services}.
+LV cables can be routed on top of the PB, while the optical fibre bundles and BV cables will be routed on top of the RB.
+MCT connectors for the fibres are located at the end of each row, and can be accompanied by small patch panels for LV, BV and DSS connection.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.90 \textwidth]{figures/services.png}
+\caption{
+Representation of the longest row of service hybrids, accomodating all necessary services (BV, LV, fibre bundles).
+}
+\label{fig:services}
+\end{figure}
+
+\section{Assembly and testing}
+
+With the proposal at hand it is possible to assemble ``super-modules'' of the size of one readout board, which can then be tested and only subsequently get mounted on the ETL disk.
+The assembly process would therefore be greatly simplified once the modules are assembled:
+\begin{itemize}
+  \item Connect modules one-by-one to the readout board
+  \item If final assembly: Screw modules onto disk
+  \item Connect BV cables to connectors on RB
+  \item Connect RB to PB with flat cables.
+\end{itemize}
+
 
 \section{Summary}
 
-Summary table comparing the TDR design with the flipped module design. Or a pro/con list
+The presented change of the ETL module and service hybrid design has several advantages over the TDR design:
+\begin{itemize}
+  \item Less space restrictions for RB and PB, especially vertically, giving more freedom in choice of components like capacitors
+  \item Direct connection of RB to the module without flexi circuits, facilitating the assembly and testing processes
+  \item PCB on modules allows for placement of components (e.g. bypass capacitors) close to the sensor and ETROCs
+  \item No need for half sized modules
+  \item Required stacking height of down to $7~\mathrm{mm}$ seems feasible
+\end{itemize}
+
+\clearpage
 
 \section{Bibliography}
 
