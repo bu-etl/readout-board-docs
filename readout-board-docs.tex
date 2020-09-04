@@ -11,6 +11,7 @@
 \usepackage{enumitem}
 \usepackage{longtable}
 \usepackage{parskip}
+\usepackage{multirow}
 
 \setlength{\parskip}{\baselineskip}
 \setlength{\parindent}{0pt}
@@ -289,7 +290,7 @@ Modules on the front and back face of each disk are arranged such that the area 
 The two different arrangements are shown on the left and right of Figure~\ref{fig:coverage_both}.
 
 In order to measure the coverage of the proposed module layout we use LGAD sensor dimensions of $22.0 \times 42.5~\mathrm{mm}$, and a full module of size $56.5 \times 43.1~\mathrm{mm}$.
-A $0.5~\mathrm{mm}$ gap between each module is assumed, and the channel for the power board is taken to be $29.5~\mathrm{mm}$.
+A $0.5~\mathrm{mm}$ gap between each module is assumed, and the channel for the power board is taken to be $29.5~\mathrm{mm}$ wide.
 Each side of the ETL detector is made of two disks (four faces) that are shifted by $2~\mathrm{mm}$ in $x$ and $y$ in order to also cover the inter-sensor gaps.
 
 \begin{figure}[!h]
@@ -304,10 +305,32 @@ The green rectangles indicate the reserved space for the power boards and LV ser
 \label{fig:coverage_both}
 \end{figure}
 
-Approximately 96\% (70\%) of muons with $1.7<\eta<2.8$ and $p_{T}>25~\mathrm{GeV}$ produced at the center of CMS and propagated through the magnetic field have at least one (two) intersection with an ETL sensor.
-An example of tracks and intersections with ETL sensors is shwon in Fig.~\ref{fig:intersect}.
+Table~\ref{tab:coverage} shows the acceptance and geometric coverage of four different configurations of ETL modules on the disk.
+The acceptance is measured by propagating muons produced at the center of CMS with $p_{T}>5~\mathrm{GeV}$ and a flat $\eta$ distribution through the CMS magnetic field to the ETL detector.
+The different configurations correspond to the amount of space that is not covered by sensors at the outer edge of the disk in order to accomodate connectors (and potentially a mini-patch-panel for BV, LV and DSS).
+The ``optimal'' configuration corresponds to the case where modules are placed up to the most outer edge of the disk, leaving no additional space for connectors.
+In this case, 91\% of the area of the disk is covered by at least one sensor.
+If 50, 65 or 85mm of space, measured along the x-axis from the modules, is kept free of modules, this geometric coverage reduces to 84--81\%.
+However, due to the flat $\eta$ distribution that is used for the acceptance measurement with muons, the acceptance only reduces to 87--86\%.
+For the region $1.70<|\eta|<2.80$ more than 97\% of muons intersect at least one sensor in any of the configurations.
+%Approximately 96\% (70\%) of muons with $1.7<\eta<2.8$ and $p_{T}>25~\mathrm{GeV}$ produced at the center of CMS and propagated through the magnetic field have at least one (two) intersection with an ETL sensor.
+An example of tracks and intersections with ETL sensors is shown in Fig.~\ref{fig:intersect}.
 The majority of muons not producing any hit pass through uncovered areas at the edge of the ETL disks.
 If the rapidity window is narrowed to $2.0<\eta<2.5$, more than 99\% of the muons intersect at least one of the sensors.
+
+\begin{table}
+  \caption{Acceptance for muons and geometric coverage of different configurations.}
+  \label{tab:coverage}
+  \begin{tabular}{c|cc|cc|cc}
+    \multirow{2}{*}{Configuration} & \multicolumn{2}{c|}{$1.66<|\eta(\mu)|<2.95$} & \multicolumn{2}{c|}{$1.70<|\eta(\mu)|<2.80$} & \multicolumn{2}{c}{Geometric coverage} \\
+                  & $\geq1$ hit & $\geq2$ hits  & $\geq1$ hit & $\geq2$ hits  & total & w.r.t. optimal \\ \hline
+    optimal       & 0.91        & 0.79          & $>0.99$     & 0.91          & 0.91  & 1.00            \\
+    50mm          & 0.87        & 0.75          & 0.99        & 0.91          & 0.84  & 0.924 \\
+    65mm          & n/a         & n/a           & n/a         & n/a           & 0.83  & 0.915 \\
+    85mm          & 0.86        & 0.75          & 0.97        & 0.90          & 0.81  & 0.894
+
+  \end{tabular}
+\end{table}
 
 \begin{figure}[!h]
 \centering
@@ -360,6 +383,12 @@ The presented change of the ETL module and service hybrid design has several adv
   \item PCB on modules allows for placement of components (e.g. bypass capacitors) close to the sensor and ETROCs
   \item No need for half sized modules
   \item Required stacking height of down to $7~\mathrm{mm}$ seems feasible
+\end{itemize}
+
+The following challenges have been identified:
+\begin{itemize}
+  \item Alignment and insertion force of board-to-board connectors
+  \item Required space for MT connectors at the end of each row and associated loss of coverage at low $\eta$
 \end{itemize}
 
 \clearpage
