@@ -70,11 +70,17 @@
 \section{Introduction to the Flipped Module Design}
 
 This document describes an alternative of the ETL module and service hybrid design to the TDR design.
+We undertook the detailed design of the readout board, moving from the initial design in the TDR to layout of boards for a first prototype.
+The primary challenge in the design is the limited space, with the TDR design assuming a z-thickness of less than 7 mm for the combined thickness for a power board stacked on the readout board.
+Developing a detailed design within this constraint introduces significant design complications.
+Studying that challenge led us to propose a modification to the positioning of the boards and a modification to the module, which we call the Flipped Module design.
+This provides significantly more space for both the readout board and the power board, and it is described below.
+
 In this proposal the LGAD silicon sensor is located below the read out chip (ETROC), essentially flipping the TDR module on its head.
 A PCB can be mounted (glued) on top of the ETROC, allowing for a board-to-board connection to the readout board (RB).
 Signals, LV and bias voltage (BV) are distributed from the RB to the module via these board-to-board and spring connectors.
 The ETROC and the LGAD sensor are connected to the PCB through wire bonds.
-The main motivation for this revised RB and module design are the tight space restrictions for the service hybrid in the TDR design, which are relaxed if the RB sits on top of the modules instead of on top of the power board in the service channel between the modules.
+%The main motivation for this revised RB and module design are the tight space restrictions for the service hybrid in the TDR design, which are relaxed if the RB sits on top of the modules instead of on top of the power board in the service channel between the modules.
 
 \begin{figure}[!h]
 \centering
@@ -253,7 +259,7 @@ The green track passes the ETL detector without an intersection at the outer (lo
 At most five service hybrids are arranged in one row on the ETL disk, shown in Fig.~\ref{fig:coverage_both}.
 Such a configuration is shown in Fig.~\ref{fig:services}.
 LV cables can be routed on top of the PB, while the optical fibre bundles and BV cables will be routed on top of the RB.
-MCT connectors for the fibres are located at the end of each row, and can be accompanied by small patch panels for LV, BV and DSS connection.
+MT connectors for the fibres are located at the end of each row, and can be accompanied by small patch panels for LV, BV and DSS connection.
 
 \begin{figure}[!h]
 \centering
@@ -262,6 +268,22 @@ MCT connectors for the fibres are located at the end of each row, and can be acc
 Representation of the longest row of service hybrids, accomodating all necessary services (BV, LV, fibre bundles).
 }
 \label{fig:services}
+\end{figure}
+
+Moving the LV and BV connectors from the patch panel PP0 to the proposed mini patch panels at the periphery on the disk has the advantage that the connectors are easily accessible.
+In the TDR concept the PP0 is located behind the two discs below the cooling lines, shown in Fig.~\ref{fig:PP0_3D}.
+This makes connecting the cables to PP0 very difficult because it would be in the shadow of already installed discs.
+Additionally, if no space for PP0 behind the disks is needed, the available space in z-direction for the modules/service hybrids increases from 7 mm to about 8.5 mm.
+A concept of the alternative mini patch panels at the end of each row of modules and service hybrids is shown in Fig.~\ref{fig:patchpanel}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.90 \textwidth]{figures/PP0_3D.pdf}\\
+\includegraphics[width=0.90 \textwidth]{figures/PP0_location.pdf}
+\caption{
+Conceptual layout and location of the TDR PP0 behind the two disks.
+}
+\label{fig:PP0_3D}
 \end{figure}
 
 \section{Assembly and testing}
@@ -276,6 +298,18 @@ The assembly process would therefore be greatly simplified once the modules are 
 \end{itemize}
 
 
+\section{Potential challenges}
+
+The following potential challenges have been identified:
+\begin{itemize}
+  \item The space on top of the ETL modules was reserved for service routing, which is now occupied by the readout board. Nevertheless, we have mapped out a detailed plan for the routing that fits.
+  \item Thermal expansion problems of the module components: this will be tested in depth, but $\Delta T > 200C$ during bump bonding of silicon to PCBs has not caused any problems so far.
+  \item Thermal conductivity: Calculations show that the temperature gradient within the silicon sensor is below 0.1K, and the temperature difference between LGAD and ETROC (across bumps) is below 1K.
+  \item Thermal runaway of sensors: Should be less of a problem in this design as the sensor is directly connected to cooling.
+  \item Alignment and insertion force of board-to-board connectors: We ordered connectors and will conduct studies soon.
+  %\item Required space for MT connectors at the end of each row and associated loss of coverage at low $\eta$
+\end{itemize}
+
 \section{Summary}
 
 The presented change of the ETL module and service hybrid design has several advantages over the TDR design:
@@ -287,11 +321,7 @@ The presented change of the ETL module and service hybrid design has several adv
   \item Required stacking height of down to $7~\mathrm{mm}$ seems feasible
 \end{itemize}
 
-The following challenges have been identified:
-\begin{itemize}
-  \item Alignment and insertion force of board-to-board connectors
-  \item Required space for MT connectors at the end of each row and associated loss of coverage at low $\eta$
-\end{itemize}
+
 
 \clearpage
 
