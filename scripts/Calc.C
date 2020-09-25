@@ -3,10 +3,10 @@
 
     // Calculate the heat flow through the bump bonds
 
-	float r_bump = 0.5*90.E-6; // Radius of a bump bond [m]
+    float r_bump = 0.5*90.E-6; // Radius of a bump bond [m]
     float area_bump = pi*r_bump*r_bump;
-	float h_bump = 150.E-6; // Height of a bump [m]
-	float k_bump = 60.; // Thermal conductivity of a bump [W/mK]
+    float h_bump = 150.E-6; // Height of a bump [m]
+    float k_bump = 60.; // Thermal conductivity of a bump [W/mK]
     float c_bump = (k_bump/h_bump)*area_bump; // Thermal conductance of a single bump [W/K]
     int n_bumps = 16*16; // Number of bumps per ETROC
     float q_ETROC = 1.; // Power of a single ETROC

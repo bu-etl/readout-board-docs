@@ -55,7 +55,7 @@ print('Temperature difference across AlN: {:.2f} K'.format(dT_AlN))
 ## calculate tenperature gradient within Si
 d_Si = 1.3*10**(-3) * 0.5
 A_Si = t_Si*d_Si
-c_withinSi = k_Si*A_Si/t_Si
+c_withinSi = k_Si*A_Si/d_Si/4.0
 print('Thermal conductance between bumps within Si: {:.2f} W/K'.format(c_withinSi))
 
 dT_withinSi = 1./Nb/c_withinSi ## this is a conservative estimate as the heat has multiple (4) paths to go
