@@ -1,0 +1,76 @@
+<HTML>
+<HEAD><TITLE>Thu May 7, 2020 17:44 Rough calculation of the temperature gradient in the sensor due to the ETROC heat load</TITLE></HEAD>
+<BODY BACKGROUND="/bkgd.gif">
+<BLOCKQUOTE>
+<H1>Rough calculation of the temperature gradient in the sensor due to the ETROC heat load</H1>
+Thu May 7, 2020 17:44
+<P>
+With the flipped module approach, we would need to pull the ETROC heat out through the bump bonds and the sensor. This could have two impacts: increase the temperature of the ETROC, produce thermal gradients in the LGAD between the bump bonds. I'll do a rough calculation of this.
+<P>
+Roberta already calculated the temperature gradient through the bump bonds in order to understand the potential for thermal runaway in the LGAD. Her results are described in a
+<A HREF="https://indico.cern.ch/event/862851/contributions/3635864/">talk</A> at an ETL meeting in November 2019.  I'll first reproduce her numbers as a warm-up exercise, then calculate the in-silicon gradient.
+<P>
+<H2>Heat flow through the bump bonds</H2>
+I'll model the bump bonds as lead free solder with radius of 90 microns and height of 150 microns. We will probably use larger solder balls, so the thickness is set by the solder ball size but the area is set by the 90 micron contact area. The thermal conductivity of solder is between 60 and 80 W/mK. I'll use k = 60 W/mK.
+<P>
+To get the heat flow per bump, C<sub>b</sub>, in [W/K], I divide k by the length of the bump and multiple by its area. I encode this in a <A HREF="Calc.C">root macro</A> and, assuming 1W/ETROC, I get the following:
+<CODE><PRE>
+Thermal conductance of a single bump = 0.0025434 [W/K]
+Thermal conductance of all bumps on an ETROC = 0.65111 [W/K]
+Thermal conductance of all bumps on an LGAD = 1.30222 [W/K]
+Temperature difference between ETROC and LGAD = 1.53584
+Thermal conductance of AlN = 86.528 [W/K]
+Temperature difference across AlN = 0.0231139
+</PRE></CODE>
+<P>
+These approximately match Roberta's numbers. I used different assumptions, most notably the bump height. If I change the code to match her assumptions I get C<sub>b</sub> = 3.9 W/K which is close to her 3.8 value; I think she rounded down to be conservative.
+<P>
+Out of curiosity, I check the thermal effect of the silicon, AlN, and an epoxy layer. I'll model it as 200 microns of silicon, a 2 mm thick AlN, and a 1 mm thick epoxy, with thermal conductivities of 200 and 1.3 W/mK, respectively.
+<CODE><PRE>
+Thermal conductance of AlN = 86.528 [W/K]
+Temperature difference across AlN = 0.0231139
+Thermal conductance of epoxy = 1.12486 [W/K]
+Temperature difference across epoxy = 1.77799
+Thermal conductance of silicon thickness = 826.342 [W/K]
+Temperature difference across silicon thickness = 0.0024203
+</PRE></CODE>
+Only the epoxy really has any effect.
+
+<H2>Temperature gradient within the silicon</H2>
+The right way to study this would be with an FEA, but I can get an upper limit on it by assuming that all the heat has to flow from the bump position, horizontally through the silicon to a region before it can flow down to the AlN. I'll approximate this with the following numbers:
+<CODE><PRE>
+Silicon thickness = 200 microns
+Silicon thermal conductivity = 191 W/mK (from <A HREF="https://www.efunda.com/materials/elements/TC_Table.cfm?Element_ID=Si">here</A>)
+Heat path is a length of 1.3/2 mm through silicon
+The path is 1.3/2 mm wide and as thick as the silicon.
+Only a quarter of the heat <I>per bump</I> has to go through this path, since there are four such paths per bump.
+</PRE></CODE>
+With this I find a very small temperature difference as shown below.
+<CODE><PRE>
+Thermal conductance of silicon horizontally = 0.0382 [W/K]
+Temperature difference across silicon horizontally = 0.0255645
+</PRE></CODE>
+This makes sense because the silicon thermal conductivity is higher than I thought, and the heat load is only 1/256 W per bump.
+In fact, the horizontal flow in the silicon is numerically pretty similar to the vertical flow through the AlN.
+<P>
+<H2>Thermal effects from an FR4 PCB</H2>
+Finally, while I'm at it, let's calculate the thermal effects from an FR4 PCB. I expect it to be similar to that of the epoxy layer since it is a similar material and thickness. But, the use of vias can improve it.
+<P>
+I'll study a 0.4 mm thick FR4 PCB with a thermal conductivity of 0.25 W/mK and then add thermal vias that are 100 micron diameter and 400 microns long and made of copper. This makes them similar to the bump bonds. I'll assume that I can place them at about twice the density of the bump bonds. The parameters used are:
+<CODE><PRE>
+FR4 thickness = 400 microns
+FR4 thermal conductivity = 0.25 W/mK 
+Via copper thermal conductivity = 300 W/mK
+Via diameter = 100 microns
+</PRE></CODE>
+This finds a large, but not ridiculous, temperature difference for just FR4 and something reasonable for FR4 with thermal vias.
+<CODE><PRE>
+Thermal conductance of FR4 = 0.5408 [W/K]
+Temperature difference across FR4 = 3.69823
+Thermal conductance of vias = 6.0288 [W/K]
+Temperature difference across vias = 0.331741
+</PRE></CODE>
+<P>
+We could test this model with a simple PCB that is coated with thermistors on one side. (JLC has 0402 thermistors that are 2 cents each.) We could easily fit at least two per LGAD pixel area, and then carry their signals to the back side through vias. They could then be readout with a MilliQan EnvironMon board.
+We could test the thermal resistance of the PCB by cooling one side and measuring the other when it is in contact with a simple heat source. The heat source could be a PCB with an array of load resistors. (Could use JLC 0402 10 ohm resistors.)
+Mounting these against the bumped silicon-to-silicon mechanicals could test the validity of these calculations.

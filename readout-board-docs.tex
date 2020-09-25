@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 
+\usepackage{appendix}
 \usepackage{mathpazo}
 \usepackage{upgreek}
 \usepackage{fullpage}
@@ -321,7 +322,73 @@ The presented change of the ETL module and service hybrid design has several adv
   \item Required stacking height of down to $7~\mathrm{mm}$ seems feasible
 \end{itemize}
 
+\newpage
+\appendix
+\appendixpage
+\addappheadtotoc
 
+\section{Temperature Gradient Calculation}
+
+One concern of the flipped module design was the possible introduction of a temperature gradient inside of the sensor, due to the changes in heat flow. In the normal design, the ETROC heat is dissipated directly through the AlN plate, while in the flipped-module design the ETROC heat must dissipate through the bump-bonds, into the sensor, and then into the AlN plate.
+
+This introduces the possibility of temperature non-uniformity inside of the LGAD sensor. To investigate this concern, some simplified calculations were done independently by David Stuart and Frank Golf. Different assumptions about material thicknesses and conductivity were made in each calculation, but the methods are the same and the calculation was cross-checked by a third program.
+
+The main conclusion of these calculations is that the principal concern of temperature gradients existing in the silicon, is negligible. A temperature difference of only 0.02K is predicted between the hottest and coldest parts of the sensor. This is due in large part to the relatively high thermal conductivity of silicon.
+
+In both calculations, the common set of assumptions was:
+
+\begin{itemize}[noitemsep,topsep=-1em]
+  \item AlN Thickness = 2mm
+  \item Size of a sensor pad = 1.3mm
+  \item Number of bumps bonds per ETROC = 256
+  \item ETROC Power = 1 Watt
+  \item Bump diameter = 90 $\upmu$m
+  \item Area of an LGAD = $(1.3$mm$)^{2} \times 256$ bumps $ \times 2 $ ETROCs$= 865.28$ mm$^{2}$
+\end{itemize}
+\vspace{1em}
+
+The differences in assumptions between the two calculations are:
+
+  \begin{center}
+  \begin{tabular}{llll}
+    \textbf{Parameter}                   & \textbf{Golf}          & \textbf{Stuart}          & \textbf{Unit} \\\midrule
+    Solder bump conductivity    & 70            & 60              & W/m$\dot$K    \\
+    Solder bump height          & 100           & 150             & $\upmu$m      \\
+    Silicon sensor conductivity & 150           & 191             & W/m$\dot$K    \\
+    Silicon sensor thickness    & 300           & 200             & $\upmu$m      \\
+    Epoxy conductivity          & 0.22          & 1.33            & W/m$\dot$K    \\
+    Epoxy thickness             & 500           & 1000            & $\upmu$m      \\
+    AlN conductivity            & 160           & 200             & W/m$\dot$K    \\
+  \end{tabular}
+  \end{center}
+
+  The results of the two calculations are:
+
+  \begin{center}
+    \begin{tabular}{llll}
+      \textbf{Parameter}                        & \textbf{Golf}          & \textbf{Stuart}          & \textbf{Unit}          \\\midrule
+      Single Bump Conductance          & 0.004         & 0.003           & W/K           \\
+      Single Bump $\upDelta$t          & 0.8772        & 1.5351          & K             \\
+      All bumps Conductance            & 1.140         & 0.651           & W/K           \\
+      All bumps $\upDelta$t            & 0.8772        & 1.5351          & K             \\
+      Sensor Conductance               & 432.640       & 826.342         & W/K           \\
+      Sensor $\upDelta$t               & 0.0046        & 0.0024          & K             \\
+      Epoxy Conductance                & 0.381         & 1.151           & W/K           \\
+      Epoxy $\upDelta$t                & 5.2532        & 1.7379          & K             \\
+      AlN Conductance                  & 69.222        & 86.528          & W/K           \\
+      AlN $\upDelta$t                  & 0.0289        & 0.0231          & K             \\
+      Silicon (horizontal) Conductance & 0.045         & 0.038           & W/K           \\
+      Silicon (horizontal) $\upDelta$t & 0.0217        & 0.0256          & K             \\
+    \end{tabular}
+  \end{center}
+
+
+David's original notes go into detail on the methods and assumptions used in producing the calculation, and can be found at \url{http://stuart.physics.ucsb.edu/Lgbk/pub/E40756.dir/E40756.html}. His calculations are saved in a root macro which can be found at \href{http://stuart.physics.ucsb.edu/Lgbk/pub/E40756.dir/Calc.C}{Calc.C}. Backup copies of both the notes and root script are copied into the Git repository of this document at \url{https://github.com/bu-etl/readout-board-docs}
+
+Frank's calculation can be found in a python script, accessible at: \url{https://github.com/bu-etl/readout-board-docs/blob/master/scripts/thermal_module.py}
+
+A unified calculation used to cross-check the two can be found in a Julia script at:
+\url{https://github.com/bu-etl/readout-board-docs/blob/master/scripts/thermal_module.jl}
 
 \clearpage
 
