@@ -349,39 +349,39 @@ In both calculations, the common set of assumptions was:
 
 The differences in assumptions between the two calculations are:
 
-  \begin{center}
+\begin{center}
   \begin{tabular}{llll}
-    \textbf{Parameter}                   & \textbf{Golf}          & \textbf{Stuart}          & \textbf{Unit} \\\midrule
-    Solder bump conductivity    & 70            & 60              & W/m$\dot$K    \\
+    \textbf{Parameter}                   & \textbf{Golf}          & \textbf{Stuart}          & \textbf{Unit} \\
+    \midrule
+    Solder bump conductivity    & 70            & 60              & W/m$\cdot$K    \\
     Solder bump height          & 100           & 150             & $\upmu$m      \\
-    Silicon sensor conductivity & 150           & 191             & W/m$\dot$K    \\
+    Silicon sensor conductivity & 150           & 191             & W/m$\cdot$K    \\
     Silicon sensor thickness    & 300           & 200             & $\upmu$m      \\
-    Epoxy conductivity          & 0.22          & 1.33            & W/m$\dot$K    \\
+    Epoxy conductivity          & 0.22          & 1.33            & W/m$\cdot$K    \\
     Epoxy thickness             & 500           & 1000            & $\upmu$m      \\
-    AlN conductivity            & 160           & 200             & W/m$\dot$K    \\
+    AlN conductivity            & 160           & 200             & W/m$\cdot$K    \\
   \end{tabular}
-  \end{center}
+\end{center}
 
-  The results of the two calculations are:
+The results of the two calculations are:
 
-  \begin{center}
-    \begin{tabular}{llll}
-      \textbf{Parameter}                        & \textbf{Golf}          & \textbf{Stuart}          & \textbf{Unit}          \\\midrule
-      Single Bump Conductance          & 0.004         & 0.003           & W/K           \\
-      Single Bump $\upDelta$t          & 0.8772        & 1.5351          & K             \\
-      All bumps Conductance            & 1.140         & 0.651           & W/K           \\
-      All bumps $\upDelta$t            & 0.8772        & 1.5351          & K             \\
-      Sensor Conductance               & 432.640       & 826.342         & W/K           \\
-      Sensor $\upDelta$t               & 0.0046        & 0.0024          & K             \\
-      Epoxy Conductance                & 0.381         & 1.151           & W/K           \\
-      Epoxy $\upDelta$t                & 5.2532        & 1.7379          & K             \\
-      AlN Conductance                  & 69.222        & 86.528          & W/K           \\
-      AlN $\upDelta$t                  & 0.0289        & 0.0231          & K             \\
-      Silicon (horizontal) Conductance & 0.045         & 0.038           & W/K           \\
-      Silicon (horizontal) $\upDelta$t & 0.0217        & 0.0256          & K             \\
-    \end{tabular}
-  \end{center}
-
+\begin{center}
+  \begin{tabular}{llll}
+    \textbf{Parameter}               & \textbf{Golf} & \textbf{Stuart} & \textbf{Unit} \\\midrule
+    Single Bump Conductance          & 0.004         & 0.003           & W/K           \\
+    Single Bump $\upDelta$t          & 0.8772        & 1.5351          & K             \\
+    All bumps Conductance            & 1.140         & 0.651           & W/K           \\
+    All bumps $\upDelta$t            & 0.8772        & 1.5351          & K             \\
+    Sensor Conductance               & 432.640       & 826.342         & W/K           \\
+    Sensor $\upDelta$t               & 0.0046        & 0.0024          & K             \\
+    Epoxy Conductance                & 0.381         & 1.151           & W/K           \\
+    Epoxy $\upDelta$t                & 5.2532        & 1.7379          & K             \\
+    AlN Conductance                  & 69.222        & 86.528          & W/K           \\
+    AlN $\upDelta$t                  & 0.0289        & 0.0231          & K             \\
+    Silicon (horizontal) Conductance & 0.045         & 0.038           & W/K           \\
+    Silicon (horizontal) $\upDelta$t & 0.0217        & 0.0256          & K             \\
+  \end{tabular}
+\end{center}
 
 David's original notes go into detail on the methods and assumptions used in producing the calculation, and can be found at \url{http://stuart.physics.ucsb.edu/Lgbk/pub/E40756.dir/E40756.html}. His calculations are saved in a root macro which can be found at \href{http://stuart.physics.ucsb.edu/Lgbk/pub/E40756.dir/Calc.C}{Calc.C}. Backup copies of both the notes and root script are copied into the Git repository of this document at \url{https://github.com/bu-etl/readout-board-docs}
 
