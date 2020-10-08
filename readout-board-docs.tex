@@ -338,11 +338,16 @@ The presented change of the ETL module and service hybrid design has several adv
 \section{Temperature Gradient Calculation}
 \label{sec:temperature-calculation}
 
-One concern of the flipped module design was the possible introduction of a temperature gradient inside of the sensor, due to the changes in heat flow. In the normal design, the ETROC heat is dissipated directly through the AlN plate, while in the flipped-module design the ETROC heat must dissipate through the bump-bonds, into the sensor, and then into the AlN plate.
+One concern of the flipped module design was the possible introduction of a temperature gradient inside of the sensor, due to the changes in heat flow.
+In the normal design, the ETROC heat is dissipated directly through the AlN plate, while in the flipped-module design the ETROC heat must dissipate through the bump-bonds, into the sensor, and then into the AlN plate.
 
-This introduces the possibility of temperature non-uniformity inside of the LGAD sensor. To investigate this concern, some simplified calculations were done independently by David Stuart and Frank Golf. Different assumptions about material thicknesses and conductivity were made in each calculation, but the methods are the same and the calculation was cross-checked by a third program.
+This introduces the possibility of temperature non-uniformity inside of the LGAD sensor.
+To investigate this concern, some simplified calculations were done independently by David Stuart and Frank Golf.
+Different assumptions about material thicknesses and conductivity were made in each calculation, but the methods are the same and the calculation was cross-checked by a third program.
 
-The main conclusion of these calculations is that the principal concern of temperature gradients existing in the silicon, is negligible. A temperature difference of only 0.02K is predicted between the hottest and coldest parts of the sensor. This is due in large part to the relatively high thermal conductivity of silicon.
+The main conclusion of these calculations is that the principal concern of temperature gradients existing in the silicon, is negligible.
+A temperature difference of only 0.02K is predicted between the hottest and coldest parts of the sensor.
+This is due in large part to the relatively high thermal conductivity of silicon.
 
 In both calculations, the common set of assumptions was:
 
@@ -392,7 +397,9 @@ The results of the two calculations are:
   \end{tabular}
 \end{center}
 
-David's original notes go into detail on the methods and assumptions used in producing the calculation, and can be found at \url{http://stuart.physics.ucsb.edu/Lgbk/pub/E40756.dir/E40756.html}. His calculations are saved in a root macro which can be found at \href{http://stuart.physics.ucsb.edu/Lgbk/pub/E40756.dir/Calc.C}{Calc.C}. Backup copies of both the notes and root script are copied into the Git repository of this document at \url{https://github.com/bu-etl/readout-board-docs}
+David's original notes go into detail on the methods and assumptions used in producing the calculation, and can be found at \url{http://stuart.physics.ucsb.edu/Lgbk/pub/E40756.dir/E40756.html}.
+His calculations are saved in a root macro which can be found at \href{http://stuart.physics.ucsb.edu/Lgbk/pub/E40756.dir/Calc.C}{Calc.C}.
+Backup copies of both the notes and root script are copied into the Git repository of this document at \url{https://github.com/bu-etl/readout-board-docs}
 
 Frank's calculation can be found in a python script, accessible at: \url{https://github.com/bu-etl/readout-board-docs/blob/master/scripts/thermal_module.py}
 
@@ -405,7 +412,7 @@ A unified calculation used to cross-check the two can be found in a Julia script
 %
 %\begin{itemize}
 %  \item [1]  C. Collaboration, ``A MIP Timing Detector for the CMS Phase-2 Upgrade'', CERN-LHCC-2019-003, 2019.
-%  \item [2  S. Los, ``Proposal for Readout Board on Top ETL SH Stack-up'', 23 March 2020. [Online]. Available: https://indico.cern.ch/event/901444.
+%  2: S. Los, ``Proposal for Readout Board on Top ETL SH Stack-up'', 23 March 2020. [Online]. Available: https://indico.cern.ch/event/901444.
 %  \item [3]  A. Apresyan and W. Li, ``ETL service hybrid prototyping plan'', 2020. [Online]. Available: https://cms-docdb.cern.ch/cgi-bin/DocDB/ShowDocument?docid=14040.
 %  \item [4]  F. Faccio, ``The bPOL12V DCDC converter for HL-LHC trackers: towards production readiness'', in \emph{TWEPP}, Santiago de Compostela, 2019.
 %  \item [5]  J. Troska, A. Brandon-Bravo, S. Detraz, A. Kraxner, L. Olanterä, C. Scarcella, C. Sigaud, C. Soos and F. Vasey, ``The VTRx+, an optical link module for data transmission at HL-LHC,'' in \emph{Topical Workshop on Electronics for Particle Physics}, Santa Cruz,, 2017.
