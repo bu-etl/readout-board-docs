@@ -83,7 +83,7 @@ Signals, LV and bias voltage (BV) are distributed from the RB to the module via 
 The ETROC and the LGAD sensor are connected to the PCB through wire bonds.
 %The main motivation for this revised RB and module design are the tight space restrictions for the service hybrid in the TDR design, which are relaxed if the RB sits on top of the modules instead of on top of the power board in the service channel between the modules.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.90 \textwidth]{figures/ETL_exploded_legend.pdf}
 \includegraphics[width=0.40 \textwidth]{figures/Flipped_module_3D_v2.png}
@@ -95,10 +95,10 @@ Bottom: View of a half module in the flipped configuration, with the LGAD sensor
 \label{fig:flippedModule}
 \end{figure}
 
-We forsee three different versions of the RB: covering 3 (6), 6 (12) and 7 (14) full (half) modules.
+We foresee three different versions of the RB: covering 3 (6), 6 (12) and 7 (14) full (half) modules.
 Each full module consists of two LGAD sensors and four readout chips (ETROC).
 
-The expected radiation environment for various regions are shown in Table 1.
+The expected radiation environment for various regions are shown in Table~\ref{tab:radiation-doses}.
 To deal with higher occupancy in high-$|\eta|$ regions the innermost part of the ETL disk ($r<425~\mathrm{mm} \equiv |\eta|>2.65$) will be populated by 3-module readout boards.
 The rest of the disk is organized such that the area coverage of the detector with sensors is optimized.
 The layout of modules and service hybrids on the surface of the ETL wedges is presented in Figure~\ref{fig:coverage}.
@@ -107,7 +107,7 @@ We reserve an area of the width of RB and PB with a depth of 50 mm at the outer 
 The main difference w.r.t. the TDR design in terms of service hybrids is the placement of the RB on top of the modules, instead of the power board.
 The RBs are powered either from above or below (powered from above shown in Fig.~\ref{fig:coverage}).
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.70 \textwidth]{figures/patch_panel_3D.png}
 \caption{
@@ -119,9 +119,8 @@ Mini-patch-panel at the end of each row of RBs and PBs.
 
 \begin{table}
   \centering
-  \caption{Table 1: Nominal radiation doses and fluences at various locations of the timing layers after 3000 fb$^{-1}$. The fluence is normalized to 1 MeV neutron equivalent in silicon.
+  \caption{Nominal radiation doses and fluences at various locations of the timing layers after 3000 fb$^{-1}$. The fluence is normalized to 1 MeV neutron equivalent in silicon.
   Numbers from [1]}
-  \label{table:radiationField}
   \begin{tabular}{ c c c c c c }
     Region & $\eta$ & R (cm) & z (cm) & Fluence (cm$^{-2}$) & Dose (kGy) \\
     \midrule
@@ -133,9 +132,10 @@ Mini-patch-panel at the end of each row of RBs and PBs.
     endcap & 2.5    & 50     & 303    & 7.5$\times 10^{14}$ & 170        \\
     endcap & 3.0    & 31.5   & 303    & 1.6$\times 10^{15}$ & 450        \\
   \end{tabular}
+  \label{tab:radiation-doses}
 \end{table}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=\linewidth]{figures/coverage.png}
 \caption{
@@ -170,7 +170,7 @@ The green rectangles indicate the reserved space above the RB for the power boar
 \section{Changes to the Module Design}
 
 In this proposal, no half size modules are foreseen.
-The modules itself have a changed structure, shown in Figure~\ref{fig:flippedModule}:
+The modules themselves have a changed structure, shown in Figure~\ref{fig:flippedModule}:
 \begin{itemize}
   \item A thicker carrier (approx. 1 mm) made out of Aluminium nitride (AlN) or Aluminium oxide (alumina)
   \item The LGAD sensor is directly mounted to the carrier, below the ETROC
@@ -181,11 +181,16 @@ The modules itself have a changed structure, shown in Figure~\ref{fig:flippedMod
 \section{Service Hybrid Requirements}
 
 The proposal does not directly impact the design of the power board.
-The service hybrid corridor assumed to be available for the PB is 29.5mm wide, and the full height of approximately $7.0--8.5~\mathrm{mm}$ is available for the PB.
-The only services routed on top of the PB are the LV cables.
-The connection from PB to RB can be done via flat cables, using either Molex XXXX or Hirose DF57 connectors.
+The service hybrid corridor assumed to be available for the PB is 29.5mm wide, and the full height of approximately $7.0--8.5~\mathrm{mm}$ is available for the PB, an increase in the vertical space available for the PB which may have benefits for efficiency or other aspects of the power board design.
+In this proposal, the only services routed on top of the PB are the LV and DSS cables.
+The connection from PB to RB is yet to be defined, but some options under consideration are:
+\begin{itemize}
+  \item Connection with rigid connectors, e.g. 100-mil single row right angle headers
+  \item Connection with short patch cables, e.g. DF57
+  \item Connection with a short flex-rigid board, with board-to-board connectors on both the powerboard and readout board.
+\end{itemize}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=\linewidth]{figures/image6.pdf}
 \caption{
@@ -204,7 +209,7 @@ In order to measure the coverage of the proposed module layout we use LGAD senso
 A $0.5~\mathrm{mm}$ gap between each module is assumed, and the channel for the power board is taken to be $29.5~\mathrm{mm}$ wide.
 Each side of the ETL detector is made of two disks (four faces) that are shifted by $2~\mathrm{mm}$ in $x$ and $y$ in order to also cover the inter-sensor gaps.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.60 \textwidth]{figures/coverage_both.png}
 \caption{
@@ -218,7 +223,7 @@ The green rectangles indicate the reserved space for the power boards and LV ser
 
 Table~\ref{tab:coverage} shows the acceptance and geometric coverage of four different configurations of ETL modules on the disk.
 The acceptance is measured by propagating muons produced at the center of CMS with $p_{T}>5~\mathrm{GeV}$ and a flat $\eta$ distribution through the CMS magnetic field to the ETL detector.
-The different configurations correspond to the amount of space that is not covered by sensors at the outer edge of the disk in order to accomodate connectors (and potentially a mini-patch-panel for BV, LV and DSS).
+The different configurations correspond to the amount of space that is not covered by sensors at the outer edge of the disk in order to accommodate connectors (and potentially a mini-patch-panel for BV, LV and DSS).
 The ``optimal'' configuration corresponds to the case where modules are placed up to the most outer edge of the disk, leaving no additional space for connectors.
 In this case, 91\% of the area of the disk is covered by at least one sensor.
 If 50, 65 or 85mm of space, measured along the x-axis from the modules, is kept free of modules, this geometric coverage reduces to 84--81\%.
@@ -243,7 +248,7 @@ If the rapidity window is narrowed to $2.0<\eta<2.5$, more than 99\% of the muon
   \end{tabular}
 \end{table}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.70 \textwidth]{figures/intersect_3D.png}
 \caption{
@@ -262,11 +267,11 @@ Such a configuration is shown in Fig.~\ref{fig:services}.
 LV cables can be routed on top of the PB, while the optical fibre bundles and BV cables will be routed on top of the RB.
 MT connectors for the fibres are located at the end of each row, and can be accompanied by small patch panels for LV, BV and DSS connection.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.90 \textwidth]{figures/services.png}
 \caption{
-Representation of the longest row of service hybrids, accomodating all necessary services (BV, LV, fibre bundles).
+Representation of the longest row of service hybrids, accommodating all necessary services (BV, LV, fibre bundles).
 }
 \label{fig:services}
 \end{figure}
@@ -277,10 +282,10 @@ This makes connecting the cables to PP0 very difficult because it would be in th
 Additionally, if no space for PP0 behind the disks is needed, the available space in z-direction for the modules/service hybrids increases from 7 mm to about 8.5 mm.
 A concept of the alternative mini patch panels at the end of each row of modules and service hybrids is shown in Fig.~\ref{fig:patchpanel}.
 
-\begin{figure}[!h]
+\begin{figure}[!p]
 \centering
-\includegraphics[width=0.90 \textwidth]{figures/PP0_3D.pdf}\\
-\includegraphics[width=0.90 \textwidth]{figures/PP0_location.pdf}
+\includegraphics[width=1.00 \textwidth]{figures/PP0_3D.pdf}\\
+\includegraphics[width=1.00 \textwidth]{figures/PP0_location.pdf}
 \caption{
 Conceptual layout and location of the TDR PP0 behind the two disks.
 }
@@ -305,7 +310,7 @@ The following potential challenges have been identified:
 \begin{itemize}
   \item The space on top of the ETL modules was reserved for service routing, which is now occupied by the readout board. Nevertheless, we have mapped out a detailed plan for the routing that fits.
   \item Thermal expansion problems of the module components: this will be tested in depth, but $\Delta T > 200C$ during bump bonding of silicon to PCBs has not caused any problems so far.
-  \item Thermal conductivity: Calculations show that the temperature gradient within the silicon sensor is below 0.1K, and the temperature difference between LGAD and ETROC (across bumps) is below 1K.
+  \item Thermal conductivity: Calculations show that the temperature gradient within the silicon sensor is below 0.1K, and the temperature difference between LGAD and ETROC (across bumps) is below 1K. See Appendix \ref{sec:temperature-calculation} for details on this calculation.
   \item Thermal runaway of sensors: Should be less of a problem in this design as the sensor is directly connected to cooling.
   \item Alignment and insertion force of board-to-board connectors: We ordered connectors and will conduct studies soon.
   %\item Required space for MT connectors at the end of each row and associated loss of coverage at low $\eta$
@@ -315,7 +320,7 @@ The following potential challenges have been identified:
 
 The presented change of the ETL module and service hybrid design has several advantages over the TDR design:
 \begin{itemize}
-  \item Less space restrictions for RB and PB, especially vertically, giving more freedom in choice of components like capacitors
+  \item Less space restrictions for RB and PB, especially vertically, giving more freedom in choice of components such as capacitors and inductors, and also allowing the power board to increase in thickness and possibly realize improvements in the embedded inductors
   \item Direct connection of RB to the module without flexi circuits, facilitating the assembly and testing processes
   \item PCB on modules allows for placement of components (e.g. bypass capacitors) close to the sensor and ETROCs
   \item No need for half sized modules
@@ -328,6 +333,7 @@ The presented change of the ETL module and service hybrid design has several adv
 \addappheadtotoc
 
 \section{Temperature Gradient Calculation}
+\label{sec:temperature-calculation}
 
 One concern of the flipped module design was the possible introduction of a temperature gradient inside of the sensor, due to the changes in heat flow. In the normal design, the ETROC heat is dissipated directly through the AlN plate, while in the flipped-module design the ETROC heat must dissipate through the bump-bonds, into the sensor, and then into the AlN plate.
 
