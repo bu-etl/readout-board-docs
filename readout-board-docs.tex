@@ -55,10 +55,12 @@
 \usepackage{hyperref} % hyperlinks, always last but glossaries
 
 
-\title{ETL Readout Board Design}
-\author{Indara Suarez, Daniel Spitzbart, Andrew Peck, Eric Hazen, Shouxiang Wu
-  \\
-  \\ \Large{\textbf{Boston University}}}
+\title{ETL Flipped Module Proposal}
+\author{Indara Suarez, Daniel Spitzbart, Andrew Peck, Eric Hazen, Shouxiang Wu \\
+  \em{Boston University}\\
+  \\Frank Golf\\
+  \em{University of Nebraska, Lincoln}
+}
 
 \date{\today}
 
@@ -67,6 +69,8 @@
 \maketitle
 
 \tableofcontents
+
+\clearpage
 
 \section{Introduction to the Flipped Module Design}
 
@@ -83,16 +87,16 @@ Signals, LV and bias voltage (BV) are distributed from the RB to the module via 
 The ETROC and the LGAD sensor are connected to the PCB through wire bonds.
 %The main motivation for this revised RB and module design are the tight space restrictions for the service hybrid in the TDR design, which are relaxed if the RB sits on top of the modules instead of on top of the power board in the service channel between the modules.
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.90 \textwidth]{figures/ETL_exploded_legend.pdf}
-\includegraphics[width=0.40 \textwidth]{figures/Flipped_module_3D_v2.png}
-\includegraphics[width=0.55 \textwidth]{figures/Flipped_module_legend_v2.png}
-\caption{
-Top: Partially exploded views of the module-RB sandwich showing its various components.
-Bottom: View of a half module in the flipped configuration, with the LGAD sensor below the ETROC.
-}
-\label{fig:flippedModule}
+\begin{figure}[!hb]
+  \centering
+  \includegraphics[width=0.90 \textwidth]{figures/ETL_exploded_legend.pdf}
+  \includegraphics[width=0.40 \textwidth]{figures/Flipped_module_3D_v2.png}
+  \includegraphics[width=0.55 \textwidth]{figures/Flipped_module_legend_v2.png}
+  \caption{
+    Top: Partially exploded views of the module-RB sandwich showing its various components.
+    Bottom: View of a half module in the flipped configuration, with the LGAD sensor below the ETROC.
+  }
+  \label{fig:flippedModule}
 \end{figure}
 
 We foresee three different versions of the RB: covering 3 (6), 6 (12) and 7 (14) full (half) modules.
@@ -116,8 +120,7 @@ Mini-patch-panel at the end of each row of RBs and PBs.
 \label{fig:patchpanel}
 \end{figure}
 
-
-\begin{table}
+\begin{table}[!hb]
   \centering
   \caption{Nominal radiation doses and fluences at various locations of the timing layers after 3000 fb$^{-1}$. The fluence is normalized to 1 MeV neutron equivalent in silicon.
   Numbers from [1]}
