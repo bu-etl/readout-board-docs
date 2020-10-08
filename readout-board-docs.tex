@@ -312,7 +312,7 @@ The assembly process would therefore be greatly simplified once the modules are 
 The following potential challenges have been identified:
 \begin{itemize}
   \item The space on top of the ETL modules was reserved for service routing, which is now occupied by the readout board. Nevertheless, we have mapped out a detailed plan for the routing that fits.
-  \item Thermal expansion problems of the module components: this will be tested in depth, but $\Delta T > 200C$ during bump bonding of silicon to PCBs has not caused any problems so far.
+  \item Thermal expansion problems of the module components: this will be tested in depth, but $\Delta T > 200C$ during bump bonding of silicon to PCBs has not caused any problems so far. This is not a full test of issues for a glued (rather than bump bonded) connection, however, and that test should be done by experts e.g. at UNL or UCSB. A back of the envelope calculation of the difference in thermal expansion between the FR4 and Silicon shows roughly 10$\upmu$m difference in expansion across a 100K temperature difference, which is expected to be acceptable, but further tests are required to prove this.
   \item Thermal conductivity: Calculations show that the temperature gradient within the silicon sensor is below 0.1K, and the temperature difference between LGAD and ETROC (across bumps) is below 1K. See Appendix \ref{sec:temperature-calculation} for details on this calculation.
   \item Thermal runaway of sensors: Should be less of a problem in this design as the sensor is directly connected to cooling.
   \item Alignment and insertion force of board-to-board connectors: We ordered connectors and will conduct studies soon.
