@@ -178,6 +178,24 @@ The modules themselves have a changed structure, shown in Figure~\ref{fig:flippe
   \item The module is connected to the readout board via board-to-board connectors
 \end{itemize}
 
+\begin{table}
+  \caption{Stack-up height of the module-readout board sandwich.
+    The space taken up by the VTRx+ is the minimum z space on top of the RB PCB that will be available for BV connectors and routing of services.}
+  \centering
+  \begin{tabular}{ l | c }
+    Component                   & Approx. thickness \\ \hline \hline
+    AlN base plate              & 1--2mm \\
+    LGAD sensor                 & 0.3mm \\
+    ETROC                       & 0.5mm \\
+    Module PCB                  & 0.5mm \\
+    Board-to-board connector    & 0.7mm \\
+    Readout board PCB           & 1mm \\
+    VTRx+                       & 2.5mm \\ \hline
+    Total                       & 6.5--7.5mm \\
+  \end{tabular}
+  \label{tab:stackup}
+\end{table}
+
 \section{Service Hybrid Requirements}
 
 The proposal does not directly impact the design of the power board.
