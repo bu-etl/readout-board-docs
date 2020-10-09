@@ -315,15 +315,44 @@ Conceptual layout and location of the TDR PP0 behind the two disks.
 
 \section{Assembly and testing}
 
-With the proposal at hand it is possible to assemble ``super-modules'' of the size of one readout board, which can then be tested and only subsequently get mounted on the ETL disk.
-The assembly process would therefore be greatly simplified once the modules are assembled:
+With the proposal at hand it is possible to assemble ``super-modules'' of the size of one readout board, which can then be tested and only subsequently get mounted on the ETL disk. The assembly process would therefore be greatly simplified once the modules are assembled.
+
+A possibility exists also for a futher level of ``super-module'' assembly, in that the readout board and power board and modules could all be connected together as a standalone apparatus, which can be independently tested in the assembly site prior to installation on the Dee.
+
+There are different possible mechanical arrangements to build this super assembly, which are described in the following sections.
+
+In either design, individual modules connected one-by-one to the readout board.
+Each of these modules is attached through board-to-board connectors to the readout board with no other rigid attachment points, so any ill effects from thermal expansion and misalignment are expected to be very small.
+
+\subsection{AlN Attached to Cooling Plate}
+
+In the baseline design, similar to the TDR or as shown in other diagrams of this document, the modules themselves are screwed to the aluminum plate, and the readout board is attached to them separately. In this design, the force to keep the modules in contact with the cooling plate comes from the screw connection at the periphery of the module.
+
+Some possible concerns about this design in the flipped module proposal are:
 \begin{itemize}
-  \item Connect modules one-by-one to the readout board
-  \item If final assembly: Screw modules onto disk
-  \item Connect BV cables to connectors on RB
-  \item Connect RB to PB with flat cables.
+  \item The thickness of the AlN plate required to ensure mechanical integrity and good contact between the module and the cooling plate
+  \item Maintaining alignment and minimizing strain between the collection of board-to-board connectors under thermal expansion. Since the modules are attached to the aluminum cooling plate, they will move with its coefficient of thermal expansion, while having to maintain good electrical and mechanical contact through the board-to-board connectors of the readout-board, which will have very different thermal properties.
 \end{itemize}
 
+\subsection{Readout Board Attached to Cooling Plate}
+
+An alternative idea, following a suggestion from Sergei Lusin, uses the readout board as the attachment point to the cooling plate, with the readout board PCB itself providing the downward force necessary to keep the modules themselves in contact with the cooling plate rather than the screws directly.
+
+A flat spacer (e.g. of plastic, kapton, fr4) with cutouts for the board-to-board connectors is placed in between the modules and the bottom surface of the readout board. The thickness of the spacer would be very slightly larger than the board-to-board connector stack height, which allows it to transfer force on the readout board more evenly across the surface area of the module, rather than being concentrated on the connectors themselves.
+
+Screws would then be installed to connect the readout-board itself to the aluminum disk, rather than the modules. The modules would then only be rigidly connected to the FR4 readout-board, which has very similar coefficients of thermal expansion to the modules themselves. The readout board could have e.g. slotted screw holes which can absorb some misalignment due to thermal expansion.
+
+A simplified diagram of such a design is shown in \figref{rb-attachment}.
+
+\begin{figure}[!hb]
+  \centering
+  \includegraphics[width=0.55 \textwidth]{figures/spring_loaded_sandwich.pdf}
+  \caption{
+    A possible scheme for attaching the readout board and modules to the cooling plate, by screwing the readout board itself into the aluminum cooling plate. Some additional metal pieces can be used to strengthen the readout board and better distribute force across the surface. Standoffs are installed between the readout-board and the cooling plate to prevent over-tightening.
+  }\label{fig:rb-attachment}
+\end{figure}
+
+In this design, since the modules themselves are not directly bonded to the aluminum disk, differences in coefficients of thermal expansion are not directly contributing to strain on the board-to-board connectors and concerns of strain are significantly lessened.
 
 \section{Potential challenges}
 
